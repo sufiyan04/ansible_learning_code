@@ -1,15 +1,16 @@
 ---
 - name: Get ARP information
-  hosts: all
-  gather_facts: false
+  hosts: all # running playbook against all the hosts in inventory files.
+  gather_facts: false # we  are not gathering facts
 
-
+# task name is show arp.
+# we are using raw module to get the show arp output.
   tasks:
     - name: show arp
       raw: "show arp"
 
-      register: print_output
+      register: print_output # storing the output.
 
-    -  debug: var=print_output.stdout_lines
+    -  debug: var=print_output.stdout_lines # printing the output 
 
 # ansible-playbook getarp.yaml -u david -k
